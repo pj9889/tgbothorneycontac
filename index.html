@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locanto Hookup</title>
+    
+    <!-- ফেভিকন লোগো -->
+    <link rel="icon" type="image/webp" href="fuckfv.webp">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .app-container {
+            position: relative;
+            width: 100%;
+            max-width: 480px;
+            height: 100vh;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+        }
+
+        .bg-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .bg-slider img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .bg-slider img.active {
+            opacity: 1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 3;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .logo-banner {
+            max-width: 220px;
+            width: 80%;
+            margin-bottom: 12px;
+            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.8));
+        }
+
+        .powered-by {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+        }
+
+        .locanto {
+            font-weight: bold;
+        }
+        .locanto .lo { color: #007bff; }
+        .locanto .can { color: #ff9800; }
+        .locanto .to { color: #e65100; }
+
+        .description {
+            max-width: 480px;
+            font-size: 15px;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(3px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, #ff0055, #ff5000);
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 16px 36px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(255, 0, 85, 0.4);
+            transition: transform 0.2s, background 0.3s;
+            text-transform: uppercase;
+        }
+
+        .cta-btn:active {
+            transform: scale(0.96);
+        }
+
+        .footer-text {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-top: 15px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+        }
+
+        /* ক্লিয়ার সাদা ঝাপসা লোডিং স্ক্রিন */
+        .loading-screen {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 10;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #111;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(0, 0, 0, 0.15);
+            border-top: 5px solid #ff0055;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-top: 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <div class="bg-slider">
+            <img src="fuck1.webp" class="active" alt="Background 1">
+            <img src="fuck2.webp" alt="Background 2">
+            <img src="fuck3.webp" alt="Background 3">
+            <img src="fuck4.webp" alt="Background 4">
+            <img src="fuck5.webp" alt="Background 5">
+        </div>
+
+        <div class="content">
+            <img src="fucklogo.webp" alt="Logo" class="logo-banner">
+            
+            <div class="powered-by">
+                Powered by <span class="locanto"><span class="lo">Lo</span><span class="can">can</span><span class="to">to</span></span>
+            </div>
+
+            <div class="description">
+                Thousands of <span class="locanto"><span class="lo">Lo</span><span class="can">can</span><span class="to">to</span></span> Escorts, single women, and single moms are using this website for casual hookups and looking for free fucks. All users have 100% verified profiles. This site is specifically designed for <span class="locanto"><span class="lo">Lo</span><span class="can">can</span><span class="to">to</span></span> users to connect for free fucks.
+            </div>
+
+            <button class="cta-btn" onclick="handleClick()">Let's Free Fuck</button>
+
+            <div class="footer-text">
+                Copyright © 2006-2026 Locanto™
+            </div>
+        </div>
+
+        <!-- ক্লিয়ার সাদা ঝাপসা স্ক্রিন -->
+        <div class="loading-screen" id="loader">
+            <img src="fucklogo.webp" alt="Logo" style="max-width: 180px; margin-bottom: 10px;">
+            <h3 style="font-weight: 600; color: #111;">Free Signup Page Loading...</h3>
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <script>
+        const images = document.querySelectorAll('.bg-slider img');
+        let currentIndex = 0;
+
+        setInterval(() => {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }, 1000);
+
+        const affiliateLink = "https://paysale.g2afse.com/click?pid=125904&offer_id=9792";
+
+        let canClick = false;
+        setTimeout(() => {
+            canClick = true;
+        }, 2000);
+
+        function handleClick() {
+            if (!canClick) return;
+
+            showLoaderAndRedirect();
+        }
+
+        function showLoaderAndRedirect() {
+            const loader = document.getElementById('loader');
+            loader.style.display = 'flex';
+
+            setTimeout(() => {
+                window.location.href = affiliateLink;
+            }, 2000);
+        }
+
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.pushState(null, null, location.href);
+            showLoaderAndRedirect();
+        };
+    </script>
+</body>
+</html>
