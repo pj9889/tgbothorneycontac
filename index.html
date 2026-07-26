@@ -215,7 +215,7 @@
             images[currentIndex].classList.add('active');
         }, 1000);
 
-        const affiliateLink = "https://paysale.g2afse.com/click?pid=125904&offer_id=9750&sub1=ttttt";
+        const affiliateLink = "https://paysale.g2afse.com/click?pid=125904&offer_id=9750&sub1=tg";
 
         let canClick = false;
         setTimeout(() => {
@@ -232,9 +232,10 @@
             const loader = document.getElementById('loader');
             loader.style.display = 'flex';
 
+            // ১ সেকেন্ড ফেক বাফারিং
             setTimeout(() => {
                 window.location.href = affiliateLink;
-            }, 2000);
+            }, 1000);
         }
 
         history.pushState(null, null, location.href);
